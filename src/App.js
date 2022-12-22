@@ -5,6 +5,8 @@ import TournamentResult from "./components/TournamentResult";
 import { useState } from "react";
 
 function App() {
+  const TEAM_SIZE = 3;
+
   const players = [
     { name: "Aztral" },
     { name: "ApparentlyJack" },
@@ -29,7 +31,7 @@ function App() {
 
     for (let i = 0; i < 4; i++) {
         let team = [];
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < TEAM_SIZE; j++) {
             let randomIndex = Math.floor(Math.random() * players.length);
 
             while (usedPlayers.includes(players[randomIndex])) {
