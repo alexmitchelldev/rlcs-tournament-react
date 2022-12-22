@@ -43,7 +43,6 @@ function App() {
     }
 
     setTeams(teams);
-    // console.log(teams);
   };
 
   return (
