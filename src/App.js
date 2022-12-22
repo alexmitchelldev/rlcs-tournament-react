@@ -1,7 +1,6 @@
 import "./index.css";
 import Header from "./components/Header";
 import RunTournament from "./components/RunTournament";
-import Teams from "./components/Teams";
 import TournamentResult from "./components/TournamentResult";
 import { useState } from "react";
 
@@ -44,7 +43,7 @@ function App() {
     }
 
     setTeams(teams);
-    console.log(teams);
+    // console.log(teams);
   };
 
   return (
