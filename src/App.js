@@ -32,14 +32,14 @@ function App() {
     for (let i = 0; i < 4; i++) {
         let team = [];
         for (let j = 0; j < TEAM_SIZE; j++) {
-            let randomIndex = Math.floor(Math.random() * players.length);
+            let randomPlayerIndex = Math.floor(Math.random() * players.length);
 
-            while (usedPlayers.includes(players[randomIndex])) {
-                randomIndex = Math.floor(Math.random() * players.length);
+            while (usedPlayers.includes(players[randomPlayerIndex])) {
+                randomPlayerIndex = Math.floor(Math.random() * players.length);
             }
 
-            usedPlayers.push(players[randomIndex]);
-            team.push(players[randomIndex]);
+            usedPlayers.push(players[randomPlayerIndex]);
+            team.push(players[randomPlayerIndex]);
         }
         teams.push(team);
     }
