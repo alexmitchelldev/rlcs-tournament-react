@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function App() {
   const TEAM_SIZE = 3;
-
   const players = [
     { name: "Aztral" },
     { name: "ApparentlyJack" },
@@ -47,7 +46,26 @@ function App() {
 
     setTeams(teams);
   };
+  const [results, setResult] = useState([
+    
+  ]);
+  const run = () => {
+    let results = [];
 
+    let randomIndex = Math.floor(Math.random() * teams.length);
+
+    for (let i = 0; i < teams.length; i++) {
+      while (results.includes(teams[randomIndex])) {
+        randomIndex = Math.floor(Math.random() * teams.length);
+      }
+
+      results.push(teams[randomIndex]);
+    }
+
+    setResult(results);
+    setDisplayResult(true);
+  };
+  
   return (
     <>
       <div>
@@ -63,7 +81,7 @@ function App() {
             return (<li key={index} >{teamString}</li>)
           })}
         </ol>
-        <TournamentResult />
+        <TournamentResult run={run} results={results} displayResults={displayResult}/>
       </div>
     </>
   );
