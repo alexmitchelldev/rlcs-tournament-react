@@ -8,10 +8,6 @@ const RunTournament = (props) => {
                 {/* <option value="16">16</option> */}
             </select>
             <button onClick={props.createTeams}>Create Teams</button>
-            <br></br>
-            {/* <button>
-                Run tournament
-            </button> */}
         </>
     )
 };
