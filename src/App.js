@@ -21,10 +21,11 @@ function App() {
     { name: "Chronic" },
     { name: "Archie" },
   ];
+
+  const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([
     
   ]);
-
   const createTeams = () => {
     let usedPlayers = [];
     let teams = [];
