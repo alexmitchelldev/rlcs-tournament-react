@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* https://stackoverflow.com/questions/65770679/encountering-white-space-at-top-of-react-app */
+*{
+  margin: 0;
+  padding: 0;
+ }
