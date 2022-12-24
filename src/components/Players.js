@@ -1,4 +1,4 @@
-const players = [
+let players = [
   { name: "Aztral" },
   { name: "ApparentlyJack" },
   { name: "Joreuz" },
@@ -13,11 +13,12 @@ const players = [
   { name: "Archie" },
 ];
 
-const setPlayerStats = () => {
-  for (const player of players) {
-    player["attack"] = Math.floor(Math.random() * 4 + 7);
-    player["defence"] = Math.floor(Math.random() * 4 + 7);
-  }
-};
+const randomStat = () => {
+  return Math.floor(Math.random() * 4 + 7);
+}
 
-export { players, setPlayerStats };
+players = players.map(player => {
+  return {...player, attack: randomStat(), defence: randomStat()};
+})
+
+export { players };
