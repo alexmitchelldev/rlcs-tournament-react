@@ -1,14 +1,14 @@
 import "./index.css";
 import Header from "./components/Header";
-import { players, setPlayerStats } from "./components/Players";
+import { players } from "./components/Players";
 import Teams from "./components/Teams";
 import RunTournament from "./components/RunTournament";
 import TournamentResult from "./components/TournamentResult";
-import background from "./assets/rlcs-background.webp";
 import { useState } from "react";
 
 function App() {
   const TEAM_SIZE = 3;
+  const [tournamentComplete, setTournamentComplete] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
   const createTeams = () => {
