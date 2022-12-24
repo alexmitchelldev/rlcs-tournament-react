@@ -31,9 +31,15 @@ function App() {
     }
 
     setTeams(teams);
+    setTournamentComplete(false);
   };
-  const [results, setResult] = useState([]);
+  const [results, setResults] = useState([]);
   const run = () => {
+    if (tournamentComplete) {
+      alert("Create new set of teams to run another tournament!");
+      return;
+    }
+
     let results = [];
 
     let randomIndex = Math.floor(Math.random() * teams.length);
@@ -46,28 +52,21 @@ function App() {
       results.push(teams[randomIndex]);
     }
 
-    setResult(results);
-    setDisplayResult(true);
+    setResults(results);
+    setTournamentComplete(true);
+
+    if (teams.length > 0) {
+      setDisplayResult(true);
+    }
   };
-
-  
-
-  setPlayerStats();
 
   return (
     <>
-    {/* https://stackoverflow.com/questions/38428322/react-component-full-screen-with-height-100 */}
-      <div
-        style={{
-          height: '100vh',
-          // backgroundImage: `url(${background})`,
-          // backgroundRepeat: 'no-repeat',
-          // backgroundSize: 'cover',
-        }}
-      >
+    {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
+      <div className="grid  place-items-center">
         <Header />
         <RunTournament createTeams={createTeams} />
-        <Teams teams={teams}/>
+        <Teams teams={teams} />
         <TournamentResult
           run={run}
           results={results}
