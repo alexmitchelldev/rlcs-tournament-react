@@ -64,6 +64,15 @@ function App() {
     setDisplayResult(true);
   };
 
+  const setPlayerStats = () => {
+    for (const player of players) {
+      player["attack"] = Math.floor(Math.random() * 4 + 7);
+      player["defence"] = Math.floor(Math.random() * 4 + 7);
+    }
+  }
+
+  setPlayerStats();
+
   return (
     <>
     {/* https://stackoverflow.com/questions/38428322/react-component-full-screen-with-height-100 */}
