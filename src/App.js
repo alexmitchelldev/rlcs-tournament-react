@@ -1,5 +1,6 @@
 import "./index.css";
 import Header from "./components/Header";
+import Teams from "./components/Teams";
 import RunTournament from "./components/RunTournament";
 import TournamentResult from "./components/TournamentResult";
 import background from "./assets/rlcs-background.webp";
@@ -76,18 +77,7 @@ function App() {
       >
         <Header />
         <RunTournament createTeams={createTeams} />
-        <h2>Teams</h2>
-        <ol>
-          {teams.map((team, index) => {
-            let teamString = "";
-            team.forEach((player, index) => {
-              index !== 2
-                ? (teamString += `${player.name}, `)
-                : (teamString += `${player.name}`);
-            });
-            return <li key={index}>{teamString}</li>;
-          })}
-        </ol>
+        <Teams teams={teams}/>
         <TournamentResult
           run={run}
           results={results}
