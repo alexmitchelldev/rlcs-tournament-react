@@ -4,6 +4,18 @@ const TournamentResult = (props) => {
     1: "2nd: ",
     2: "3rd/4th: ",
     3: "3rd/4th: ",
+    4: "5th-8th: ",
+    5: "5th-8th: ",
+    6: "5th-8th: ",
+    7: "5th-8th: ",
+    8: "9th-16th: ",
+    9: "9th-16th: ",
+    10: "9th-16th: ",
+    11: "9th-16th: ",
+    12: "9th-16th: ",
+    13: "9th-16th: ",
+    14: "9th-16th: ",
+    15: "9th-16th: ", 
   };
   return (
     <>
