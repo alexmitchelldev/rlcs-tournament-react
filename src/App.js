@@ -1,5 +1,6 @@
 import "./index.css";
 import Header from "./components/Header";
+import { players, setPlayerStats } from "./components/Players";
 import Teams from "./components/Teams";
 import RunTournament from "./components/RunTournament";
 import TournamentResult from "./components/TournamentResult";
@@ -8,21 +9,6 @@ import { useState } from "react";
 
 function App() {
   const TEAM_SIZE = 3;
-  const players = [
-    { name: "Aztral" },
-    { name: "ApparentlyJack" },
-    { name: "Joreuz" },
-    { name: "Joyo" },
-    { name: "Rise" },
-    { name: "Vatira" },
-    { name: "Jstn" },
-    { name: "GarrettG" },
-    { name: "Squishy" },
-    { name: "Noly" },
-    { name: "Chronic" },
-    { name: "Archie" },
-  ];
-
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
   const createTeams = () => {
@@ -64,12 +50,7 @@ function App() {
     setDisplayResult(true);
   };
 
-  const setPlayerStats = () => {
-    for (const player of players) {
-      player["attack"] = Math.floor(Math.random() * 4 + 7);
-      player["defence"] = Math.floor(Math.random() * 4 + 7);
-    }
-  }
+  
 
   setPlayerStats();
 
