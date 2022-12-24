@@ -15,29 +15,34 @@ const TournamentResult = (props) => {
     12: "9th-16th: ",
     13: "9th-16th: ",
     14: "9th-16th: ",
-    15: "9th-16th: ", 
+    15: "9th-16th: ",
   };
   return (
     <>
-      <button onClick={props.run}>Run Tournament</button>
+      <button
+        onClick={props.run}
+        className="px-4 py-1 text-sm text-blue-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-blue-500 hover:border-transparent"
+      >
+        Run Tournament
+      </button>
       {props.displayResults ? (
         <>
-        <h3>RESULTS!!</h3>
-        <ul>
-          {props.results.map((team, index) => {
-            let resultString = "";
-            team.forEach((player, index) => {
-              index !== 2
-                ? (resultString += `${player.name}, `)
-                : (resultString += `${player.name}`);
-            });
-            return (
-              <li key={index}>
-                {indexMap[index]} {resultString}
-              </li>
-            );
-          })}
-        </ul>
+          <h3>RESULTS!!</h3>
+          <ul>
+            {props.results.map((team, index) => {
+              let resultString = "";
+              team.forEach((player, index) => {
+                index !== 2
+                  ? (resultString += `${player.name}, `)
+                  : (resultString += `${player.name}`);
+              });
+              return (
+                <li key={index}>
+                  {indexMap[index]} {resultString}
+                </li>
+              );
+            })}
+          </ul>
         </>
       ) : null}
     </>
