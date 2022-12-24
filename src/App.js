@@ -63,7 +63,7 @@ function App() {
   return (
     <>
     {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
-      <div className="grid  place-items-center">
+      <div style={{width: "500px", margin: "0 auto"}} className="text-center">
         <Header />
         <RunTournament createTeams={createTeams} />
         <Teams teams={teams} />

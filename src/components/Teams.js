@@ -10,7 +10,7 @@ const Teams = (props) => {
               ? (teamString += `${player.name}, `)
               : (teamString += `${player.name}`);
           });
-          return <li key={index}>{teamString}</li>;
+          return <li key={index}>Team{index + 1}: {teamString}</li>;
         })}
       </ol>
     </>
