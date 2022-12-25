@@ -68,7 +68,7 @@ function App() {
         <Header />
         <SetupTournament setTeamSize={setTeamSize} setNumberOfTeams={setNumberOfTeams} createTeams={createTeams} />
         {/* <br></br> */}
-        <Teams teams={teams} />
+        <Teams teams={teams} teamSize={TEAM_SIZE}/>
         <TournamentResult
           run={run}
           results={results}
