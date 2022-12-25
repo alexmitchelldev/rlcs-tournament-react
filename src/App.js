@@ -8,6 +8,7 @@ import { useState } from "react";
 
 function App() {
   const [TEAM_SIZE, setTeamSize] = useState(3);
+  const [NUMBER_OF_TEAMS, setNumberOfTeams] = useState(16);
   const [tournamentComplete, setTournamentComplete] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
@@ -15,7 +16,7 @@ function App() {
     let usedPlayers = [];
     let teams = [];
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < NUMBER_OF_TEAMS; i++) {
       let team = [];
       for (let j = 0; j < TEAM_SIZE; j++) {
         let randomPlayerIndex = Math.floor(Math.random() * players.length);
@@ -65,7 +66,7 @@ function App() {
     {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
       <div style={{width: "500px", margin: "0 auto"}} className="text-center">
         <Header />
-        <SetupTournament createTeams={createTeams} />
+        <SetupTournament setTeamSize={setTeamSize} setNumberOfTeams={setNumberOfTeams} createTeams={createTeams} />
         {/* <br></br> */}
         <Teams teams={teams} />
         <TournamentResult

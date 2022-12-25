@@ -21,12 +21,17 @@ const SetupTournament = (props) => {
             </label>
             <div className="relative">
               <select
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  let teamSize = e.target.value;
+                  props.setTeamSize(teamSize);
+                }}
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
               >
-                <option>3 v 3</option>
-                <option>2 v 2</option>
-                <option>1 v 1</option>
+                <option value="3">3 v 3</option>
+                <option value="2">2 v 2</option>
+                <option value="1">1 v 1</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -50,10 +55,15 @@ const SetupTournament = (props) => {
               <select
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
+                onChange={(e) => {
+                  let numberOfteams = e.target.value;
+
+                  props.setNumberOfTeams(numberOfteams);
+                }}
               >
-                <option>16</option>
-                <option>8</option>
-                <option>4</option>
+                <option value="16">16</option>
+                <option value="8">8</option>
+                <option value="4">4</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
