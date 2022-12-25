@@ -2,7 +2,7 @@ import "./index.css";
 import Header from "./components/Header";
 import { players } from "./components/Players";
 import Teams from "./components/Teams";
-import RunTournament from "./components/RunTournament";
+import SetupTournament from "./components/SetupTournament";
 import TournamentResult from "./components/TournamentResult";
 import { useState } from "react";
 
@@ -65,7 +65,8 @@ function App() {
     {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
       <div style={{width: "500px", margin: "0 auto"}} className="text-center">
         <Header />
-        <RunTournament createTeams={createTeams} />
+        <SetupTournament createTeams={createTeams} />
+        {/* <br></br> */}
         <Teams teams={teams} />
         <TournamentResult
           run={run}
