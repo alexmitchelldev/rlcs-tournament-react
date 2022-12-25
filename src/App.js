@@ -63,7 +63,7 @@ function App() {
 
   return (
     <>
-    {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
+    <div style={{width: "80%", margin: "0 auto"}}>
     <Header />
       <div style={{width: "550px"}} className="text-center ml-10">
         
@@ -76,6 +76,10 @@ function App() {
           displayResults={displayResult}
         /> */}
       </div>
+      
+    </div>
+    {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
+    
     </>
   );
 }
