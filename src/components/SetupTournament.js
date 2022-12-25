@@ -5,6 +5,7 @@ const SetupTournament = (props) => {
         onSubmit={(e) => {
           //prevent page refresh
           e.preventDefault();
+          
           props.createTeams();
         }}
         id="setup-tournament"
