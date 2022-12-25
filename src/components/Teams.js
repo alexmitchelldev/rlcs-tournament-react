@@ -33,7 +33,7 @@ const Teams = (props) => {
                     });
 
                     return (
-                      <tr class="bg-gray-100 border-b">
+                      <tr class={index % 2 === 0 ? "bg-gray-100 border-b" : "bg-white border-b"}>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {index + 1}
                         </td>
