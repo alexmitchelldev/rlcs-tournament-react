@@ -3,6 +3,7 @@ const SetupTournament = (props) => {
     <>
       <form
         onSubmit={(e) => {
+          //prevent page refresh
           e.preventDefault();
           props.createTeams();
         }}
