@@ -64,16 +64,17 @@ function App() {
   return (
     <>
     {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
-      <div style={{width: "500px", margin: "0 auto"}} className="text-center">
-        <Header />
+    <Header />
+      <div style={{width: "550px"}} className="text-center ml-10">
+        
         <SetupTournament setTeamSize={setTeamSize} setNumberOfTeams={setNumberOfTeams} createTeams={createTeams} />
         {/* <br></br> */}
         <Teams teams={teams} teamSize={TEAM_SIZE}/>
-        <TournamentResult
+        {/* <TournamentResult
           run={run}
           results={results}
           displayResults={displayResult}
-        />
+        /> */}
       </div>
     </>
   );
