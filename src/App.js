@@ -7,7 +7,7 @@ import TournamentResult from "./components/TournamentResult";
 import { useState } from "react";
 
 function App() {
-  const TEAM_SIZE = 3;
+  const [TEAM_SIZE, setTeamSize] = useState(3);
   const [tournamentComplete, setTournamentComplete] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
