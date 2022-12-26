@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import { players } from "./components/Players";
 import Teams from "./components/Teams";
 import SetupTournament from "./components/SetupTournament";
-import TournamentResult from "./components/TournamentResult";
 import { useState } from "react";
 
 function App() {
