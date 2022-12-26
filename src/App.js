@@ -62,23 +62,22 @@ function App() {
 
   return (
     <>
-    <div style={{width: "80%", margin: "0 auto"}}>
-    <Header />
-      <div style={{width: "550px"}} className="text-center ml-10">
-        
-        <SetupTournament setTeamSize={setTeamSize} setNumberOfTeams={setNumberOfTeams} createTeams={createTeams} />
-        {/* <br></br> */}
-        <Teams teams={teams} teamSize={TEAM_SIZE}/>
-        {/* <TournamentResult
-          run={run}
-          results={results}
-          displayResults={displayResult}
-        /> */}
+      <div style={{ width: "80%", margin: "0 auto" }}>
+        <Header />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="...">
+          <SetupTournament
+                setTeamSize={setTeamSize}
+                setNumberOfTeams={setNumberOfTeams}
+                createTeams={createTeams}
+              />
+              <Teams teams={teams} teamSize={TEAM_SIZE} />
+          </div>
+          <div className="...">
+            TOURNAMENT RESULTS HERE
+          </div>
+        </div>
       </div>
-      
-    </div>
-    {/* https://daily-dev-tips.com/posts/center-elements-with-tailwind-css/ */}
-    
     </>
   );
 }
