@@ -1,7 +1,7 @@
 const header = () => {
     return (
       <>
-      <div className="text-center">
+      <div className="text-center mb-5">
       <h1 className="text-5xl font-bold mt-0 mb-6">RLCS Tournament Simulator</h1>
         <h2 className="text-3xl font-bold mb-8 text-left">How to use</h2>
         <ol className="list-decimal text-left">
