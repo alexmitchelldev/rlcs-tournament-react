@@ -21,8 +21,8 @@ const SetupTournament = (props) => {
             <div className="relative">
               <select
                 onChange={(e) => {
-                  let teamSize = e.target.value;
-                  props.setTeamSize(Number(teamSize));
+                  let teamSize = Number(e.target.value);
+                  props.setTeamSize(teamSize);
                 }}
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
@@ -54,9 +54,9 @@ const SetupTournament = (props) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 onChange={(e) => {
-                  let numberOfteams = e.target.value;
+                  let numberOfteams = Number(e.target.value);
 
-                  props.setNumberOfTeams(Number(numberOfteams));
+                  props.setNumberOfTeams(numberOfteams);
                 }}
               >
                 <option value="16">16</option>
