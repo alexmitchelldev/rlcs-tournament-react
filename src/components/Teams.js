@@ -35,7 +35,7 @@ const Teams = (props) => {
               </th>
               <th
                 className="text-sm font-medium text-gray-900 px-6 py-4"
-                colSpan={3}
+                colSpan={props.teamSize}
               >
                 {props.teamSize === 1 ? "Player" : "Players"}
               </th>
