@@ -79,6 +79,7 @@ function App() {
           setNumberOfTeams={setNumberOfTeams}
           createTeams={createTeams}
           setDisplayTeamsTable={setDisplayTeamsTable}
+          setDisplayRunTournament={setDisplayRunTournament}
         />
         <Teams
           teams={teams}

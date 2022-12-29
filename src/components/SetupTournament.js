@@ -24,6 +24,7 @@ const SetupTournament = (props) => {
                   let teamSize = Number(e.target.value);
                   props.setTeamSize(teamSize);
                   props.setDisplayTeamsTable(false);
+                  props.setDisplayRunTournament(false);
                 }}
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
@@ -59,6 +60,7 @@ const SetupTournament = (props) => {
 
                   props.setNumberOfTeams(numberOfteams);
                   props.setDisplayTeamsTable(false);
+                  props.setDisplayRunTournament(false);
                 }}
               >
                 <option value="16">16</option>
