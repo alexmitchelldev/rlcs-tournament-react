@@ -43,7 +43,7 @@ const Teams = (props) => {
                 Score
               </th>
             </thead>
-            <tbody class="bg-grey-light " style={{ height: "30vh" }}>
+            <tbody class="bg-grey-light">
               {props.teams.map((team, index) => {
                 const players = team.playerNames.map((playerName) => {
                   return (
