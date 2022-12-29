@@ -34,7 +34,7 @@ const RunTournament = (props) => {
                 className="text-sm font-medium text-gray-900 px-6 py-4"
                 colSpan={props.teamSize}
               >
-                {props.teamSize === 1 ? "Players" : "Team"}
+                {props.teamSize === 1 ? "Player" : "Team"}
               </th>
               <th className="text-sm font-medium text-gray-900 px-6 py-4">
                 Matches
