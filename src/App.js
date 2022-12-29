@@ -69,7 +69,7 @@ function App() {
 
   return (
     <>
-      <div style={{ width: "50%", margin: "0 auto" }}>
+      <div style={{ width: "55%", margin: "0 auto", height: "97vh", marginTop: "10px", padding: "10px", backgroundColor: "white", borderRadius: "10px"}}>
         <Header />
         <SetupTournament
           setTeamSize={setTeamSize}

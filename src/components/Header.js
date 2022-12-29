@@ -2,7 +2,7 @@ const header = () => {
   return (
     <>
       <div className="text-center mb-5">
-        <h1 className="text-5xl font-bold mt-0 mb-6">
+        <h1 className="text-5xl font-bold mt-0 mb-6 header">
           RLCS Tournament Simulator
         </h1>
         <ul class="list-none">
