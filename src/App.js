@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { players } from "./components/Player";
 import { Teams, Team } from "./components/Teams";
 import SetupTournament from "./components/SetupTournament";
+import RunTournament from "./components/RunTournament";
 import { useState } from "react";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [NUMBER_OF_TEAMS, setNumberOfTeams] = useState(16);
   const [tournamentComplete, setTournamentComplete] = useState(false);
   const [displayTeamsTable, setDisplayTeamsTable] = useState(false);
+  const [displayRunTournament, setDisplayRunTournament] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
   const createTeams = () => {
@@ -38,6 +40,7 @@ function App() {
 
     setTeams(teams);
     setDisplayTeamsTable(true);
+    setDisplayRunTournament(true);
     setTournamentComplete(false);
   };
   const [results, setResults] = useState([]);
@@ -69,7 +72,7 @@ function App() {
 
   return (
     <>
-      <div style={{ width: "55%", margin: "0 auto", height: "97vh", marginTop: "10px", padding: "10px", backgroundColor: "white", borderRadius: "10px"}}>
+      <div style={{ width: "60%", margin: "0 auto", height: "97vh", marginTop: "10px", padding: "15px", backgroundColor: "white", borderRadius: "10px"}}>
         <Header />
         <SetupTournament
           setTeamSize={setTeamSize}
@@ -82,6 +85,7 @@ function App() {
           teamSize={TEAM_SIZE}
           displayTeamsTable={displayTeamsTable}
         />
+        <RunTournament displayRunTournament={displayRunTournament}/>
       </div>
     </>
   );
