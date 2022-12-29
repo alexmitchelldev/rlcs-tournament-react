@@ -48,31 +48,29 @@ function App() {
     setTournamentComplete(false);
   };
   const [results, setResults] = useState([]);
-  const run = () => {
+
+  const runTournament = () => {
     if (tournamentComplete) {
       alert("Create new set of teams to run another tournament!");
       return;
     }
 
-    let results = [];
-
-    let randomIndex = Math.floor(Math.random() * teams.length);
+    let tournamentResults = [];
 
     for (let i = 0; i < teams.length; i++) {
-      while (results.includes(teams[randomIndex])) {
+      let randomIndex = Math.floor(Math.random() * teams.length);
+
+      while(tournamentResults.includes(teams[randomIndex])) {
         randomIndex = Math.floor(Math.random() * teams.length);
       }
 
-      results.push(teams[randomIndex]);
+      tournamentResults.push(teams[randomIndex]);
     }
 
-    setResults(results);
+    setResults(tournamentResults);
+    console.log(tournamentResults);
     setTournamentComplete(true);
-
-    if (teams.length > 0) {
-      setDisplayResult(true);
-    }
-  };
+  }
 
   return (
     <>
@@ -84,13 +82,14 @@ function App() {
           createTeams={createTeams}
           setDisplayTeamsTable={setDisplayTeamsTable}
           setDisplayRunTournament={setDisplayRunTournament}
+          setResults={setResults}
         />
         <Teams
           teams={teams}
           teamSize={TEAM_SIZE}
           displayTeamsTable={displayTeamsTable}
         />
-        <RunTournament displayRunTournament={displayRunTournament}/>
+        <RunTournament displayRunTournament={displayRunTournament} runTournament={runTournament} results={results} teamSize={TEAM_SIZE}/>
       </div>
     </>
   );
