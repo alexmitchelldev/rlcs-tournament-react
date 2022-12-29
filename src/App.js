@@ -38,6 +38,10 @@ function App() {
       teams.push(team);
     }
 
+    teams.sort((a, b) => {
+      return b.score - a.score;
+    })
+
     setTeams(teams);
     setDisplayTeamsTable(true);
     setDisplayRunTournament(true);
