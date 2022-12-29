@@ -75,6 +75,7 @@ function App() {
           setTeamSize={setTeamSize}
           setNumberOfTeams={setNumberOfTeams}
           createTeams={createTeams}
+          setDisplayTeamsTable={setDisplayTeamsTable}
         />
         <Teams
           teams={teams}
