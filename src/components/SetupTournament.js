@@ -58,6 +58,7 @@ const SetupTournament = (props) => {
                   let numberOfteams = Number(e.target.value);
 
                   props.setNumberOfTeams(numberOfteams);
+                  props.setDisplayTeamsTable(false);
                 }}
               >
                 <option value="16">16</option>
