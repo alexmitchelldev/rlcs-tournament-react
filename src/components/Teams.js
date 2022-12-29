@@ -1,54 +1,82 @@
+class Team {
+  constructor(name, players) {
+    this.name = name;
+    this.players = players;
+    this.playerNames = this.getPlayerNames();
+    this.score = this.calculateTeamScore();
+  }
+
+  calculateTeamScore() {
+    return this.players.reduce((teamScore, player) => {
+      return teamScore + player.score;
+    }, 0);
+  }
+
+  getPlayerNames() {
+    return this.players.map((player) => {
+      return player.name;
+    });
+  }
+}
+
 const Teams = (props) => {
   return (
     <>
-      <div class="flex flex-col">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-              <table class="min-w-full">
-                <thead class="bg-white border-b">
-                  <tr>
-                    <th
-                      scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                    >
-                      {props.teamSize === 1 ? 'Player #' : 'Team #'}
-                    </th>
-                    <th
-                      scope="col"
-                      class="text-sm font-medium text-gray-900 px-6 py-4 text-center"
-                    >
-                      {props.teamSize === 1 ? 'Player' : 'Players'}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {props.teams.map((team, index) => {
-                    let players = team.map((player) => {
-                      return (
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {player.name}
-                        </td>
-                      );
-                    });
+      {props.displayTeamsTable ? (
+        // https://www.tailwindcsscomponent.com/fixed-height-scrollable-table
+        <div
+          className="flex flex-col overflow-y-scroll w-full text-center mt-4"
+          style={{ height: "25vh" }}
+        >
+          <table className="min-w-full">
+            <thead className="bg-white border-b">
+              <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                {props.teamSize === 1 ? "Player #" : "Team #"}
+              </th>
+              <th
+                className="text-sm font-medium text-gray-900 px-6 py-4"
+                colSpan={3}
+              >
+                {props.teamSize === 1 ? "Player" : "Players"}
+              </th>
+              <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                Score
+              </th>
+            </thead>
+            <tbody class="bg-grey-light " style={{ height: "30vh" }}>
+              {props.teams.map((team, index) => {
+                const players = team.playerNames.map((playerName) => {
+                  return (
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {playerName}
+                    </td>
+                  );
+                });
 
-                    return (
-                      <tr class={index % 2 === 0 ? "bg-gray-100 border-b" : "bg-white border-b"}>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {index + 1}
-                        </td>
-                        {players}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                let backgroundColor =
+                  index % 2 === 0
+                    ? "bg-gray-100 border-b"
+                    : "bg-white border-b";
+                let rowClass = `justify-between w-full mb-4 ${backgroundColor}`;
+
+                return (
+                  <tr className={rowClass}>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {index + 1}
+                    </td>
+                    {players}
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      {team.score}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-      </div>
+      ) : null}
     </>
   );
 };
 
-export default Teams;
+export { Teams, Team };

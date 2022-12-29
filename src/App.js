@@ -1,7 +1,7 @@
 import "./index.css";
 import Header from "./components/Header";
-import { players } from "./components/Players";
-import Teams from "./components/Teams";
+import { players } from "./components/Player";
+import { Teams, Team } from "./components/Teams";
 import SetupTournament from "./components/SetupTournament";
 import { useState } from "react";
 
@@ -9,6 +9,7 @@ function App() {
   const [TEAM_SIZE, setTeamSize] = useState(3);
   const [NUMBER_OF_TEAMS, setNumberOfTeams] = useState(16);
   const [tournamentComplete, setTournamentComplete] = useState(false);
+  const [displayTeamsTable, setDisplayTeamsTable] = useState(false);
   const [displayResult, setDisplayResult] = useState(false);
   const [teams, setTeams] = useState([]);
   const createTeams = () => {
@@ -16,7 +17,8 @@ function App() {
     let teams = [];
 
     for (let i = 0; i < NUMBER_OF_TEAMS; i++) {
-      let team = [];
+      let teamPlayers = [];
+
       for (let j = 0; j < TEAM_SIZE; j++) {
         let randomPlayerIndex = Math.floor(Math.random() * players.length);
 
@@ -25,12 +27,17 @@ function App() {
         }
 
         usedPlayers.push(players[randomPlayerIndex]);
-        team.push(players[randomPlayerIndex]);
+        teamPlayers.push(players[randomPlayerIndex]);
       }
+
+      const teamNumber = `${i + 1}`;
+      let team = new Team(teamNumber, teamPlayers);
+
       teams.push(team);
     }
 
     setTeams(teams);
+    setDisplayTeamsTable(true);
     setTournamentComplete(false);
   };
   const [results, setResults] = useState([]);
@@ -62,21 +69,18 @@ function App() {
 
   return (
     <>
-      <div style={{ width: "80%", margin: "0 auto" }}>
+      <div style={{ width: "50%", margin: "0 auto" }}>
         <Header />
-        <div className="grid grid-cols-2 gap-4">
-          <div className="...">
-          <SetupTournament
-                setTeamSize={setTeamSize}
-                setNumberOfTeams={setNumberOfTeams}
-                createTeams={createTeams}
-              />
-              <Teams teams={teams} teamSize={TEAM_SIZE} />
-          </div>
-          <div className="...">
-            TOURNAMENT RESULTS HERE
-          </div>
-        </div>
+        <SetupTournament
+          setTeamSize={setTeamSize}
+          setNumberOfTeams={setNumberOfTeams}
+          createTeams={createTeams}
+        />
+        <Teams
+          teams={teams}
+          teamSize={TEAM_SIZE}
+          displayTeamsTable={displayTeamsTable}
+        />
       </div>
     </>
   );
