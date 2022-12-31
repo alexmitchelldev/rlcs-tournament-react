@@ -68,7 +68,6 @@ function App() {
     }
 
     setResults(tournamentResults);
-    console.log(tournamentResults);
     setTournamentComplete(true);
   }
 
