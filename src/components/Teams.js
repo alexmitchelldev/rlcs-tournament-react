@@ -8,7 +8,8 @@ class Team {
 
   calculateTeamScore() {
     return this.players.reduce((teamScore, player) => {
-      return teamScore + player.score;
+      const playerRating = (player.attack + player.defence) / 2;
+      return teamScore + playerRating;  
     }, 0);
   }
 

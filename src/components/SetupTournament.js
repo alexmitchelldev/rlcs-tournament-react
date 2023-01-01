@@ -1,4 +1,60 @@
+import { useEffect, useState } from "react";
+import RunTournament from "./RunTournament";
+import { Teams, Team } from "./Teams";
+
 const SetupTournament = (props) => {
+  const [players, setPlayers] = useState([]);
+
+  // Fetch all players from DB
+  useEffect(() => {
+    fetch("http://localhost:8001/players")
+      .then((response) => response.json())
+      .then((data) => setPlayers(data));
+  });
+
+  const [teams, setTeams] = useState([]);
+  const [teamSize, setTeamSize] = useState(3);
+  const [numberOfTeams, setNumberOfTeams] = useState(16);
+
+  const [results, setResults] = useState([]);
+  const [tournamentComplete, setTournamentComplete] = useState(false);
+  const [displayTeamsTable, setDisplayTeamsTable] = useState(false);
+  const [displayRunTournament, setDisplayRunTournament] = useState(false);
+  
+  const createTeams = () => {
+    let usedPlayers = [];
+    let teams = [];
+
+    for (let i = 0; i < numberOfTeams; i++) {
+      let teamPlayers = [];
+
+      for (let j = 0; j < teamSize; j++) {
+        let randomPlayerIndex = Math.floor(Math.random() * players.length);
+
+        while (usedPlayers.includes(players[randomPlayerIndex])) {
+          randomPlayerIndex = Math.floor(Math.random() * players.length);
+        }
+
+        usedPlayers.push(players[randomPlayerIndex]);
+        teamPlayers.push(players[randomPlayerIndex]);
+      }
+
+      const teamNumber = `${i + 1}`;
+      let team = new Team(teamNumber, teamPlayers);
+
+      teams.push(team);
+    }
+
+    teams.sort((a, b) => {
+      return b.score - a.score;
+    });
+
+    setTeams(teams);
+    setDisplayTeamsTable(true);
+    setDisplayRunTournament(true);
+    setTournamentComplete(false);
+  };
+
   return (
     <>
       <form
@@ -6,8 +62,7 @@ const SetupTournament = (props) => {
           //prevent page refresh
           e.preventDefault();
 
-          props.createTeams();
-          props.setResults([]);
+          createTeams();
         }}
         id="setup-tournament"
       >
@@ -22,10 +77,10 @@ const SetupTournament = (props) => {
             <div className="relative">
               <select
                 onChange={(e) => {
-                  let teamSize = Number(e.target.value);
-                  props.setTeamSize(teamSize);
-                  props.setDisplayTeamsTable(false);
-                  props.setDisplayRunTournament(false);
+                  let newTeamSize = Number(e.target.value);
+                  setTeamSize(newTeamSize);
+                  setDisplayTeamsTable(false);
+                  setDisplayRunTournament(false);
                 }}
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
@@ -48,11 +103,10 @@ const SetupTournament = (props) => {
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
                 onChange={(e) => {
-                  let numberOfteams = Number(e.target.value);
-
-                  props.setNumberOfTeams(numberOfteams);
-                  props.setDisplayTeamsTable(false);
-                  props.setDisplayRunTournament(false);
+                  let newNumberOfTeams = Number(e.target.value);
+                  setNumberOfTeams(newNumberOfTeams);
+                  setDisplayTeamsTable(false);
+                  setDisplayRunTournament(false);
                 }}
               >
                 <option value="16">16</option>
@@ -70,6 +124,8 @@ const SetupTournament = (props) => {
           Create Teams
         </button>
       </form>
+      <Teams teams={teams} teamSize={teamSize} numberOfTeams={numberOfTeams} displayTeamsTable={displayTeamsTable}/>
+      <RunTournament teams={teams} displayRunTournament={displayRunTournament} setTournamentComplete={setTournamentComplete} tournamentComplete={tournamentComplete}/>
     </>
   );
 };
